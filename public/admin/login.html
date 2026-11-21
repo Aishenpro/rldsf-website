@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administrator Login | Rosa Lomba Foundation</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body class="login-page">
+
+  <main class="login-card">
+    <div class="brand">
+      <div class="brand-icon">🌳</div>
+      <h1>Rosa Lomba Foundation</h1>
+      <p>Administration Portal</p>
+    </div>
+
+    <form id="loginForm">
+      <label for="email">Email address</label>
+      <input
+        id="email"
+        type="email"
+        autocomplete="username"
+        required
+      >
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        required
+      >
+
+      <p id="loginError" role="alert"></p>
+
+      <button type="submit" id="loginButton">
+        Sign In
+      </button>
+    </form>
+
+    <a href="/">Return to website</a>
+  </main>
+
+  <script src="/js/admin.js" defer></script>
+</body>
+</html>

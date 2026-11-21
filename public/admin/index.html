@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Foundation Administration</title>
+
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+    <div class="sidebar-brand">
+      <div class="brand-icon">🌳</div>
+
+      <div>
+        <strong>Rosa Lomba</strong>
+        <small>Foundation Admin</small>
+      </div>
+    </div>
+
+    <nav>
+      <button data-section="overview" class="nav-item active">
+        <span>▦</span> Overview
+      </button>
+
+      <button data-section="content" class="nav-item">
+        <span>▤</span> Content
+      </button>
+
+      <button data-section="donations" class="nav-item">
+        <span>♡</span> Donations
+      </button>
+
+      <button data-section="reports" class="nav-item">
+        <span>▥</span> Reports
+      </button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="/" target="_blank">Visit website ↗</a>
+
+      <button id="logoutButton">
+        Sign out
+      </button>
+    </div>
+
+  </aside>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <h1 id="pageTitle">Dashboard</h1>
+        <p>Foundation administration</p>
+      </div>
+
+      <div class="admin-profile">
+        <span id="connectionStatus">Connecting...</span>
+        <strong id="adminEmail">Administrator</strong>
+      </div>
+    </header>
+
+    <section id="overview" class="dashboard-section">
+
+      <div class="welcome">
+        <h2>Welcome to your dashboard</h2>
+        <p>
+          Manage your foundation, programs, projects
+          and donations from one place.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+
+        <article class="stat-card">
+          <span>Total Donations</span>
+          <strong id="totalDonations">0</strong>
+        </article>
+
+        <article class="stat-card">
+          <span>Successful Donations</span>
+          <strong id="successfulDonations">0</strong>
+        </article>
+
+        <article class="stat-card">
+          <span>Pending Donations</span>
+          <strong id="pendingDonations">0</strong>
+        </article>
+
+        <article class="stat-card">
+          <span>Total Raised</span>
+          <strong id="totalAmount">0</strong>
+        </article>
+
+      </div>
+
+      <article class="panel">
+        <h2>Recent Donations</h2>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Donor</th>
+                <th>Amount</th>
+                <th>Provider</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody id="recentDonations"></tbody>
+          </table>
+        </div>
+      </article>
+
+    </section>
+
+    <section id="content" class="dashboard-section hidden">
+
+      <div class="section-heading">
+        <div>
+          <h2>Content Management</h2>
+          <p>Manage your website content.</p>
+        </div>
+
+        <button id="newContentButton">
+          + New Content
+        </button>
+      </div>
+
+      <div class="panel hidden" id="contentEditor">
+
+        <h3 id="editorTitle">Create Content</h3>
+
+        <form id="contentForm">
+
+          <input type="hidden" id="contentId">
+
+          <label for="contentType">Content type</label>
+
+          <select id="contentType" required>
+            <option value="page">Page</option>
+            <option value="program">Program</option>
+            <option value="project">Project</option>
+            <option value="news">News</option>
+            <option value="event">Event</option>
+            <option value="gallery">Gallery</option>
+          </select>
+
+          <label for="contentTitle">Title</label>
+          <input id="contentTitle" required maxlength="200">
+
+          <label for="contentSlug">Slug</label>
+          <input id="contentSlug" required maxlength="150">
+
+          <label for="contentImage">Image URL</label>
+          <input id="contentImage" type="url">
+
+          <label for="contentBody">Description / Content</label>
+          <textarea id="contentBody" rows="8"></textarea>
+
+          <label for="contentStatus">Publication status</label>
+
+          <select id="contentStatus">
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+            <option value="archived">Archived</option>
+          </select>
+
+          <div class="form-actions">
+            <button type="submit">Save Content</button>
+            <button type="button" id="cancelContent">
+              Cancel
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <article class="panel">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Updated</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody id="contentTable"></tbody>
+          </table>
+        </div>
+      </article>
+
+    </section>
+
+    <section id="donations" class="dashboard-section hidden">
+
+      <h2>Donation Management</h2>
+
+      <article class="panel">
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Donor</th>
+                <th>Email</th>
+                <th>Amount</th>
+                <th>Currency</th>
+                <th>Provider</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+
+            <tbody id="donationTable"></tbody>
+          </table>
+        </div>
+
+      </article>
+
+    </section>
+
+    <section id="reports" class="dashboard-section hidden">
+      <h2>Reports</h2>
+
+      <article class="panel">
+        <h3>Donation statistics</h3>
+
+        <p id="reportSummary">
+          Loading donation statistics...
+        </p>
+      </article>
+    </section>
+
+  </main>
+
+</div>
+
+<div id="toast" role="status"></div>
+
+<script src="/js/admin.js" defer></script>
+
+</body>
+</html>
